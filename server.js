@@ -11,6 +11,8 @@ const memoryCache = cacheManager.caching({
   ttl: process.env.CACHE_TTL || 3600,
 });
 
+const userAgent = process.env.USER_AGENT || 'metadata-bot';
+
 app.use(json());
 
 app.use(async ctx => {
@@ -22,6 +24,12 @@ app.use(async ctx => {
 
   if (!validUrl.isWebUri(url)) {
     console.log('Invalid Url: ', url);
+    ctx.status = 500;
+    ctx.body = {
+      message: `Invalid Url: ${url}`,
+      status: 500,
+    };
+
     return false;
   }
 
@@ -34,7 +42,12 @@ app.use(async ctx => {
       response = cache;
     } else {
       console.log('Scraping URL: ', url);
-      response = await scrape(url);
+      response = await scrape({
+        headers: {
+          'User-Agent': userAgent,
+        },
+        url,
+      });
     }
 
     console.log('Scrape complete: ', response);
@@ -42,6 +55,7 @@ app.use(async ctx => {
     ctx.body = response;
   } catch (err) {
     console.log('Scrape error: ', err)
+    ctx.status = err.status;
     ctx.body = err;
   }
 });

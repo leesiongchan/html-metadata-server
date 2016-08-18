@@ -42,6 +42,7 @@ services:
     environment:
       - CACHE_MAXSIZE=100
       - CACHE_TTL=3600
+      - USER_AGENT=metadata-bot
 ```
 
 ## Usage
@@ -63,3 +64,7 @@ This is to configure the maximum size of cachable objects.
 #### CACHE_TTL (default: 3600)
 
 This is to the time-to-live of cache.
+
+#### USER_AGENT (default: metadata-bot)
+
+You also can customize your user agent to anything you like.
