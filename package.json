@@ -1,0 +1,22 @@
+{
+  "name": "html-metadata-server",
+  "version": "1.0.0",
+  "description": "A simple wrapper server for [html-metadata](https://github.com/wikimedia/html-metadata).",
+  "scripts": {
+    "start": "node server.babel.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lee Siong Chan (ahlee2326@me.com)",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.11.6",
+    "cache-manager": "^2.1.2",
+    "html-metadata": "^1.4.2",
+    "koa": "^2.0.0",
+    "koa-json": "^2.0.2",
+    "valid-url": "^1.0.9"
+  }
+}
