@@ -36,7 +36,7 @@ version: '2'
 
 services:
   html-metadata-server:
-    image: leesiongchan/html-metadata-server
+    image: ahlee2326/html-metadata-server
     ports:
       - "3000:3000"
     environment:
