@@ -42,7 +42,8 @@ services:
     environment:
       - CACHE_MAXSIZE=100
       - CACHE_TTL=3600
-      - CORS_ALLOW_ORIGIN='*'
+      # - CORS_ALLOW_ORIGIN=*
+      - CORS_ALLOW_ORIGIN=^https?://(?:[\w-]+\.)?cdn.com$$
       - USER_AGENT=metadata-bot
 ```
 
