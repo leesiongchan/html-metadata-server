@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import cacheManager from 'cache-manager';
+import cors from 'kcors';
 import json from 'koa-json';
 import scrape from 'html-metadata';
 import validUrl from 'valid-url';
@@ -13,13 +14,13 @@ const memoryCache = cacheManager.caching({
 
 const userAgent = process.env.USER_AGENT || 'metadata-bot';
 
+app.use(cors({
+  allowMethods: 'GET',
+  origin: process.env.CORS_ALLOW_ORIGIN || '*',
+}));
 app.use(json());
 
 app.use(async ctx => {
-  if (ctx.method !== 'GET') {
-    return false;
-  }
-
   const url = ctx.query.url;
 
   if (!validUrl.isWebUri(url)) {

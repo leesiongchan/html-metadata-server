@@ -42,6 +42,7 @@ services:
     environment:
       - CACHE_MAXSIZE=100
       - CACHE_TTL=3600
+      - CORS_ALLOW_ORIGIN='*'
       - USER_AGENT=metadata-bot
 ```
 
@@ -63,8 +64,12 @@ This is to configure the maximum size of cachable objects.
 
 #### CACHE_TTL (default: 3600)
 
-This is to the time-to-live of cache.
+This is to configure the time-to-live of cache.
 
 #### USER_AGENT (default: metadata-bot)
 
 You also can customize your user agent to anything you like.
+
+#### CORS_ALLOW_ORIGIN (default: '*')
+
+This is to configure the Cross-origin resource sharing (CORS) - Access-Control-Allow-Origin to allows cross-domain communication from the browser.
