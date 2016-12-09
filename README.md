@@ -1,4 +1,5 @@
 # html-metadata-server
+
 A simple wrapper server for [html-metadata](https://github.com/wikimedia/html-metadata).
 
 ## Getting Started
@@ -31,20 +32,8 @@ $ docker run --name html-metadata-server -p 3000:3000 -d html-metadata-server
 
 ### Run via docker-compose
 
-```yaml
-version: '2'
-
-services:
-  html-metadata-server:
-    image: ahlee2326/html-metadata-server
-    ports:
-      - "3000:3000"
-    environment:
-      - CACHE_MAXSIZE=100
-      - CACHE_TTL=3600
-      # - CORS_ALLOW_ORIGIN=*
-      - CORS_ALLOW_ORIGIN=^https?://(?:[\w-]+\.)?cdn.com$$
-      - USER_AGENT=metadata-bot
+```sh
+$ docker-compose up -d
 ```
 
 ## Usage

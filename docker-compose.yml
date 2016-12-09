@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  html-metadata-server:
+    image: ahlee2326/html-metadata-server
+    ports:
+      - "3000:3000"
+    environment:
+      - CACHE_MAXSIZE=100
+      - CACHE_TTL=3600
+      - CORS_ALLOW_ORIGIN=^https?://(?:[\w-]+\.)?cdn.com$$
+      - USER_AGENT=metadata-bot

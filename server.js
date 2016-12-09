@@ -24,10 +24,11 @@ app.use(async ctx => {
   const url = ctx.query.url;
 
   if (!validUrl.isWebUri(url)) {
-    console.log('Invalid Url: ', url);
+    console.log('Invalid URL: ', url);
+
     ctx.status = 500;
     ctx.body = {
-      message: `Invalid Url: ${url}`,
+      message: `Invalid URL: ${url}`,
       status: 500,
     };
 
@@ -40,9 +41,11 @@ app.use(async ctx => {
 
     if (cache) {
       console.log('Load from cache.');
+
       response = cache;
     } else {
       console.log('Scraping URL: ', url);
+
       response = await scrape({
         headers: {
           'User-Agent': userAgent,
@@ -52,10 +55,14 @@ app.use(async ctx => {
     }
 
     console.log('Scrape complete: ', response);
+
     memoryCache.set(url, response);
+
+    ctx.status = 200;
     ctx.body = response;
   } catch (err) {
     console.log('Scrape error: ', err)
+
     ctx.status = err.status;
     ctx.body = err;
   }
