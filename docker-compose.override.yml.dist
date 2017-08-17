@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  html-metadata-server:
+    env_file: ./.env
+    image: ahlee2326/html-metadata-server
